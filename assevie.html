@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projet Asservie - Stratégie réseaux sociaux pour restaurant">
+    <title>Projet Asservie | Cloé Laurin - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .project-header {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-title {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .project-title .title-script {
+            font-family: var(--font-script);
+            font-size: 90px;
+        }
+
+        .project-subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-icon {
+            font-size: 32px;
+        }
+
+        .meta-label {
+            font-size: 13px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+
+        .project-content {
+            padding: 80px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .content-main h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-main h2 .title-script {
+            font-family: var(--font-script);
+            font-size: 48px;
+            color: var(--purple);
+        }
+
+        .content-main p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .content-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .info-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li::before {
+            content: '→';
+            color: var(--purple);
+            font-weight: 700;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--cream) 100%);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 2px solid var(--beige);
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .mission-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid var(--beige);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mission-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .mission-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .mission-card p {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+
+        .results-section {
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--cream) 100%);
+            border-radius: 32px;
+            padding: 60px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results-section::before {
+            content: '✨';
+            position: absolute;
+            font-size: 200px;
+            top: -50px;
+            right: -50px;
+            opacity: 0.1;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 64px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .result-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+      
+        .project-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 80px;
+            flex-wrap: wrap;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--beige);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 48px;
+            }
+
+            .project-title .title-script {
+                font-size: 56px;
+            }
+
+            .project-subtitle {
+                font-size: 18px;
+            }
+
+            .results-section {
+                padding: 40px 24px;
+            }
+
+            .missions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="page-project">
+
+    <nav class="nav-bento">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-script">Cloé</span>
+                <span class="logo-sans">Laurin</span>
+            </a>
+            
+            <button class="menu-burger" aria-label="Menu" aria-expanded="false">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="apropos.html" class="nav-link">À propos</a></li>
+                <li><a href="experiences.html" class="nav-link">Expériences</a></li>
+                <li><a href="skillshop.html" class="nav-link">Skillshop</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container-bento">
+            <div class="project-header">
+                <div class="project-category">🎨 Identité visuelle</div>
+                <h1 class="project-title">
+                    <span class="title-script">Assevie</span> Association
+                </h1>
+                <p class="project-subtitle">
+                    Création complète de la charte graphique pour l'association étudiante du lycée Sévigné
+                </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">📅</div>
+                        <div class="meta-label">Durée</div>
+                        <div class="meta-value">1 mois</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">👥</div>
+                        <div class="meta-label">Client</div>
+                        <div class="meta-value">Association du Lycée Sévigné</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">🎯</div>
+                        <div class="meta-label">Rôle</div>
+                        <div class="meta-value">Graphiste freelance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content">
+        <div class="container-bento">
+            <div class="content-grid">
+ 
+                <div class="content-main">
+                    <h2>
+                        <span class="title-script">Le</span> Projet
+                    </h2>
+                    <p>
+                        Assevie est l'association étudiante du lycée Sévigné de Charleville-Mézières. Cette association joue un rôle central dans la vie étudiante en organisant des événements, en fédérant les étudiants et en créant du lien entre les différentes promotions. Elle avait besoin d'une identité visuelle forte et moderne pour renforcer sa reconnaissance auprès des lycéens.
+                    </p>
+                    <p>
+                        Ma mission était de créer une charte graphique complète de A à Z : logo, couleurs, typographies, et l'ensemble des supports de communication nécessaires à l'association. L'objectif était de créer une identité jeune, dynamique et facilement déclinable sur tous les supports (print et digital).
+                    </p>
+
+                    <h2 style="margin-top: 60px;">
+                        <span class="title-script">Mes</span> missions
+                    </h2>
+                    
+                    <div class="missions-grid">
+                        
+                        <div class="mission-card">
+                            <span class="mission-icon">📐</span>
+                            <h3>Charte Graphique</h3>
+                            <p>Définition de la palette de couleurs, choix des typographies, règles d'utilisation et guidelines complètes.</p>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: 60px;">
+                        <span class="title-script">L'</span>Approche créative
+                    </h2>
+                    <p>
+                        Pour créer l'identité visuelle d'Assevie, j'ai d'abord analysé les valeurs de l'association : jeunesse, dynamisme, convivialité et engagement. J'ai ensuite réalisé plusieurs ateliers avec les membres du bureau pour comprendre leur vision et leurs attentes.
+                    </p>
+                    <p>
+                        Le logo devait être moderne et facilement reconnaissable, tout en restant sobre pour s'adapter à tous les supports. J'ai opté pour une approche minimaliste avec des formes géométriques et des couleurs vives qui reflètent l'énergie de la jeunesse. La charte graphique complète garantit une cohérence visuelle sur tous les supports de communication de l'association.
+                    </p>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-box">
+                        <h3>🛠️ Outils utilisés</h3>
+                        <ul class="info-list">
+                            <li>Adobe Illustrator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2 style="text-align: center; font-size: 42px; margin-bottom: 20px;">
+                    <span class="title-script" style="font-size: 52px; color: var(--purple);">Les</span> Résultats
+                </h2>
+                <p style="text-align: center; font-size: 18px; color: var(--gray); max-width: 700px; margin: 0 auto;">
+                    Une identité visuelle complète et cohérente adoptée par toute l'association
+                </p>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-number">100%</div>
+                        <div class="result-label">Charte Complète</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">15+</div>
+                        <div class="result-label">Supports Créés</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">♾️</div>
+                        <div class="result-label">Déclinable</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-nav">
+                <a href="portfolio.html" class="btn-back">
+                    <span>←</span>
+                    <span>Retour au portfolio</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bento">
+        <div class="container-bento">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <span class="logo-script">Cloé</span>
+                        <span class="logo-sans">Laurin</span>
+                    </div>
+                    <p class="footer-tagline">Étudiante entrepreneure engagée en communication • Charleville-Mézières, France</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="apropos.html">À propos</a>
+                    <a href="experiences.html">Expériences</a>
+                    <a href="skillshop.html">Skillshop</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cloé Laurin. Tous droits réservés.</p>
+                <p class="footer-love">Fait avec ❤️ et créativité</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

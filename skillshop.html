@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-Shop — Bento Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="skillshop.css">
+</head>
+<body>
+    <!-- Bonus aléatoire -->
+    <div id="randomBonus" class="random-bonus hidden">
+        <div class="bonus-icon">💎</div>
+        <div class="bonus-text">Cliquez!</div>
+    </div>
+
+    <!-- Navigation Bento -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <span class="logo-skill">Skill</span>
+                <span class="logo-shop">Shop</span>
+            </div>
+            <div class="nav-credit">
+                <span id="creditBalance" class="nav-credit-amount">500</span>
+                <span class="nav-credit-label">crédits</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section avec badges -->
+    <section class="hero">
+        <!-- Badges flottants -->
+        <div class="hero-badge badge-1">
+            <span>⚡<br>Rapide</span>
+        </div>
+        <div class="hero-badge badge-2">
+            <span>Créatif</span>
+        </div>
+        <div class="hero-badge badge-3">
+            <span>Innovation</span>
+        </div>
+        <div class="hero-badge badge-4">
+            <span>Pro</span>
+        </div>
+
+        <!-- Sparkles -->
+        <div class="sparkle sparkle-1">✨</div>
+        <div class="sparkle sparkle-2">✨</div>
+        <div class="sparkle sparkle-3">✨</div>
+
+        <div class="container">
+            <h1 class="hero-title">
+                <span class="title-skill">Skill</span><span class="title-shop">Shop</span>
+            </h1>
+            <p class="hero-subtitle">Développez vos compétences avec style. Investissez dans ce qui compte vraiment.</p>
+            <div class="hero-tagline">🚀 Plateforme d'apprentissage créative</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Zone de Production -->
+        <section class="production-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-script">Gagner</span>
+                    <span class="title-bold">des Crédits</span>
+                </h2>
+                <p class="section-description">Produisez des crédits pour acquérir de nouvelles compétences</p>
+            </div>
+            
+            <div class="production-card">
+                <form id="productionForm" class="production-form">
+                    <div class="form-group">
+                        <label for="productionTime">⏱️ Heures de production</label>
+                        <input 
+                            type="number" 
+                            id="productionTime" 
+                            name="productionTime" 
+                            min="1" 
+                            max="24" 
+                            value="1"
+                            required
+                        >
+                    </div>
+                    <button type="submit" id="productionBtn" class="btn-primary">
+                        🚀 Lancer la production
+                    </button>
+                    <div class="production-info">💡 Gain : Heures × 20 crédits</div>
+                </form>
+                <div id="productionMessage" class="production-message"></div>
+            </div>
+        </section>
+
+        <!-- Compétences Acquises -->
+        <section class="acquired-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-script">Vos</span>
+                    <span class="title-bold">Compétences</span>
+                </h2>
+                <p class="section-description">Les compétences que vous avez acquises</p>
+            </div>
+            <div id="acquiredSkillsList" class="acquired-grid">
+                <div class="empty-state">
+                    <div class="empty-icon">📚</div>
+                    <p class="empty-text">Aucune compétence acquise</p>
+                    <p class="empty-subtext">Commencez par explorer le catalogue</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalogue -->
+        <section class="catalog-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-script">Catalogue</span>
+                    <span class="title-bold">de Compétences</span>
+                </h2>
+                <p class="section-description">Choisissez les compétences qui vous correspondent</p>
+            </div>
+            <div id="catalogGrid" class="catalog-grid">
+                <!-- Généré par JS -->
+            </div>
+        </section>
+
+        <!-- Panier -->
+        <section class="cart-section" id="cartSection">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <h3 class="cart-title">🛒 Panier</h3>
+                        <span id="cartCount" class="cart-count">0</span>
+                    </div>
+                    <button id="toggleCartBtn" class="btn-toggle" title="Appuyez sur 'P'">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="cartContent" class="cart-content">
+                    <div id="cartItems" class="cart-items">
+                        <div class="empty-state small">
+                            <div class="empty-icon">🛍️</div>
+                            <p class="empty-text">Votre panier est vide</p>
+                            <p class="empty-subtext">Ajoutez des compétences</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-footer">
+                        <div class="cart-total">
+                            <span class="total-label">💰 Total</span>
+                            <span id="cartTotal" class="total-amount">0</span>
+                        </div>
+                        <div class="cart-actions">
+                            <button id="clearCartBtn" class="btn-secondary" title="Raccourci : C">
+                                Vider
+                            </button>
+                            <button id="validatePurchaseBtn" class="btn-primary">
+                                Valider l'achat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Messages -->
+    <div id="messageBox" class="message-box hidden"></div>
+
+    <!-- Footer Bento -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                Raccourcis clavier : <kbd>C</kbd> Vider le panier • <kbd>P</kbd> Afficher/Masquer le panier
+            </p>
+            <p class="footer-love">Fait avec ✨ et créativité</p>
+        </div>
+    </footer>
+
+    <script src="skillshop.js"></script>
+</body>
+</html>

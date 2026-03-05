@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projet Le Buddy - Identité visuelle pour bar à jeux">
+    <title>Projet Le Buddy | Cloé Laurin - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, var(--green) 0%, var(--coral) 100%);
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .project-header {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-title {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .project-title .title-script {
+            font-family: var(--font-script);
+            font-size: 90px;
+        }
+
+        .project-subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-icon {
+            font-size: 32px;
+        }
+
+        .meta-label {
+            font-size: 13px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+
+        .project-content {
+            padding: 80px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .content-main h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-main h2 .title-script {
+            font-family: var(--font-script);
+            font-size: 48px;
+            color: var(--green);
+        }
+
+        .content-main p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .content-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .info-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li::before {
+            content: '→';
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--cream) 100%);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 2px solid var(--beige);
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, var(--green) 0%, var(--coral) 100%);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .deliverable-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid var(--beige);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deliverable-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--green) 0%, var(--coral) 100%);
+        }
+
+        .deliverable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .deliverable-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .deliverable-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .deliverable-card p {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .process-section {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--yellow) 100%);
+            border-radius: 32px;
+            padding: 60px;
+            margin: 60px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--green) 0%, var(--coral) 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .step-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step-item p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .results-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .result-item {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 20px;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+        }
+
+        .result-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .result-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .result-label {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .result-description {
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 8px;
+        }
+
+      
+        .project-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 80px;
+            flex-wrap: wrap;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--beige);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: var(--green);
+            color: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 48px;
+            }
+
+            .project-title .title-script {
+                font-size: 56px;
+            }
+
+            .project-subtitle {
+                font-size: 18px;
+            }
+
+            .process-section {
+                padding: 40px 24px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="page-project">
+    <nav class="nav-bento">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-script">Cloé</span>
+                <span class="logo-sans">Laurin</span>
+            </a>
+            
+            <button class="menu-burger" aria-label="Menu" aria-expanded="false">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="apropos.html" class="nav-link">À propos</a></li>
+                <li><a href="experiences.html" class="nav-link">Expériences</a></li>
+                <li><a href="skillshop.html" class="nav-link">Skillshop</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container-bento">
+            <div class="project-header">
+                <div class="project-category">🍽️ Gestion des réseaux sociaux</div>
+                <h1 class="project-title">
+                    <span class="title-script">Le</span> Buddy
+                </h1>
+                <p class="project-subtitle">
+                    Gestion des réseaux sociaux pour un restaurant à concept évolutif : barista le matin, bistrot le midi et bar festif le soir
+                </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">📅</div>
+                        <div class="meta-label">Statut</div>
+                        <div class="meta-value">En cours</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">👥</div>
+                        <div class="meta-label">Client</div>
+                        <div class="meta-value">Restaurant</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">🎯</div>
+                        <div class="meta-label">Rôle</div>
+                        <div class="meta-value">Community manager freelance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content">
+        <div class="container-bento">
+            <div class="content-grid">
+
+                <div class="content-main">
+                    <h2>
+                        <span class="title-script">Le</span> Contexte
+                    </h2>
+                    <p>
+                        Le Buddy est un restaurant innovant au concept évolutif qui s'adapte aux rythmes de la journée. Le matin, il se transforme en coffee shop cosy avec un service barista professionnel. Le midi, l'ambiance devient celle d'un bistrot réconfortant avec des plats maisons. Puis, en soirée, le lieu se métamorphose en bar festif avec cocktails et ambiance conviviale.
+                    </p>
+                    <p>
+                        Ma mission est de gérer l'ensemble de la présence digitale du restaurant sur les réseaux sociaux. Le défi principal : communiquer efficacement sur trois ambiances différentes tout en conservant une identité de marque cohérente, et attirer les bonnes audiences aux bons moments de la journée.
+                    </p>
+
+                    <h2 style="margin-top: 60px;">
+                        <span class="title-script">Les</span> missions
+                    </h2>
+                    
+                    <div class="deliverables-grid">
+                        <div class="deliverable-card">
+                            <span class="deliverable-icon">📱</span>
+                            <h3>Animation quotidienne</h3>
+                            <p>Création et publication de contenus adaptés à chaque moment de la journée pour valoriser les 3 concepts.</p>
+                        </div>
+                        
+                        <div class="deliverable-card">
+                            <span class="deliverable-icon">📸</span>
+                            <h3>Création de contenu</h3>
+                            <p>Shootings photo des plats, boissons et ambiances. Stories dynamiques pour montrer l'évolution du lieu.</p>
+                        </div>
+                        
+                        <div class="deliverable-card">
+                            <span class="deliverable-icon">✍️</span>
+                            <h3>Rédaction engageante</h3>
+                            <p>Rédaction de posts captivants pour chaque moment : café du matin, réconfort du midi, soirées festives.</p>
+                        </div>
+                        
+                        <div class="deliverable-card">
+                            <span class="deliverable-icon">🎯</span>
+                            <h3>Stratégie de ciblage</h3>
+                            <p>Adaptation des messages et horaires de publication selon les cibles : travailleurs, familles, jeunes adultes.</p>
+                        </div>
+                        
+                        <div class="deliverable-card">
+                            <span class="deliverable-icon">💬</span>
+                            <h3>Community management</h3>
+                            <p>Gestion des interactions, réponses aux commentaires, messages privés et gestion de la e-réputation.</p>
+                        </div>
+                        
+                        <div class="deliverable-card">
+                            <span class="deliverable-icon">📊</span>
+                            <h3>Analyse & optimisation</h3>
+                            <p>Suivi des performances, analyse des meilleurs horaires et types de contenus, reporting régulier.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-box">
+                        <h3>🛠️ Outils utilisés</h3>
+                        <ul class="info-list">
+                            <li>Instagram & Facebook</li>
+                            <li>Meta Business Suite</li>
+                            <li>Canva</li>
+                            <li>Adobe Photoshop</li>
+                            <li>CapCut</li>
+                            <li>Asana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-section">
+                <h2 style="text-align: center; font-size: 42px; margin-bottom: 20px;">
+                    <span class="title-script" style="font-size: 52px; color: var(--green);">Les 3</span> moments de la Journée
+                </h2>
+                <p style="text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 18px;">
+                    Un restaurant, trois ambiances, trois communications différentes
+                </p>
+            </div>
+            <div class="results-section">
+                <h2 style="font-size: 42px; margin-bottom: 40px;">
+                    <span class="title-script" style="font-size: 52px; color: var(--green);">Résultats</span> & performance
+                </h2>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-icon">📈</div>
+                        <div class="result-label">Croissance continue</div>
+                        <div class="result-description">Augmentation régulière de l'audience</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">💬</div>
+                        <div class="result-label">Engagement fort</div>
+                        <div class="result-description">Communauté active et fidèle</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">🎯</div>
+                        <div class="result-label">3 Publics ciblés</div>
+                        <div class="result-description">Adaptation réussie aux moments</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">⭐</div>
+                        <div class="result-label">Notoriété locale</div>
+                        <div class="result-description">Restaurant centre-ville</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="project-nav">
+                <a href="portfolio.html" class="btn-back">
+                    <span>←</span>
+                    <span>Retour au portfolio</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer-bento">
+        <div class="container-bento">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <span class="logo-script">Cloé</span>
+                        <span class="logo-sans">Laurin</span>
+                    </div>
+                    <p class="footer-tagline">Étudiante entrepreneure engagée en communication • Charleville-Mézières, France</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="apropos.html">À propos</a>
+                    <a href="experiences.html">Expériences</a>
+                    <a href="skillshop.html">Skillshop</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cloé Laurin. Tous droits réservés.</p>
+                <p class="footer-love">Fait avec ❤️ et créativité</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

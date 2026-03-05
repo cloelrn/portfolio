@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projet Radio Bouton - Responsable communication pour radio locale">
+    <title>Projet Radio Bouton | Cloé Laurin - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, var(--coral) 0%, var(--yellow) 100%);
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .project-header {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-title {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .project-title .title-script {
+            font-family: var(--font-script);
+            font-size: 90px;
+        }
+
+        .project-subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-icon {
+            font-size: 32px;
+        }
+
+        .meta-label {
+            font-size: 13px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .project-content {
+            padding: 80px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .content-main h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-main h2 .title-script {
+            font-family: var(--font-script);
+            font-size: 48px;
+            color: var(--coral);
+        }
+
+        .content-main p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .content-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .info-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li::before {
+            content: '→';
+            color: var(--coral);
+            font-weight: 700;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--cream) 100%);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 2px solid var(--beige);
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, var(--coral) 0%, var(--pink) 100%);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+  
+        .values-section {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--yellow) 100%);
+            border-radius: 32px;
+            padding: 60px;
+            margin: 60px 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--coral);
+        }
+
+        .value-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .missions-section {
+            margin: 60px 0;
+        }
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .mission-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid var(--beige);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--coral) 0%, var(--yellow) 100%);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mission-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .mission-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .mission-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mission-card li {
+            padding: 8px 0;
+            color: var(--gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .mission-card li::before {
+            content: '•';
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .achievements-section {
+            margin: 60px 0;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid var(--beige);
+            transition: 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--coral);
+        }
+
+        .achievement-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--coral);
+            margin-bottom: 12px;
+        }
+
+        .achievement-label {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .achievement-description {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .quote-section {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 60px;
+            margin: 60px 0;
+            text-align: center;
+            border: 3px dashed var(--coral);
+            position: relative;
+        }
+
+        .quote-section::before,
+        .quote-section::after {
+            content: '"';
+            font-size: 120px;
+            font-family: var(--font-script);
+            color: var(--coral);
+            opacity: 0.2;
+            position: absolute;
+        }
+
+        .quote-section::before {
+            top: 20px;
+            left: 40px;
+        }
+
+        .quote-section::after {
+            bottom: 20px;
+            right: 40px;
+        }
+
+        .quote-text {
+            font-size: 28px;
+            font-style: italic;
+            color: var(--black);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-author {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--coral);
+        }
+
+        .project-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 80px;
+            flex-wrap: wrap;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--beige);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: var(--coral);
+            color: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 48px;
+            }
+
+            .project-title .title-script {
+                font-size: 56px;
+            }
+
+            .project-subtitle {
+                font-size: 18px;
+            }
+
+            .values-section,
+            .quote-section {
+                padding: 40px 24px;
+            }
+
+            .quote-text {
+                font-size: 20px;
+            }
+
+            .missions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="page-project">
+
+    <nav class="nav-bento">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-script">Cloé</span>
+                <span class="logo-sans">Laurin</span>
+            </a>
+            
+            <button class="menu-burger" aria-label="Menu" aria-expanded="false">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="apropos.html" class="nav-link">À propos</a></li>
+                <li><a href="experiences.html" class="nav-link">Expériences</a></li>
+                <li><a href="skillshop.html" class="nav-link">Skillshop</a></li>
+                <li><a href="contact.html" class="nav-link active"> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container-bento">
+            <div class="project-header">
+                <div class="project-category">📻 Communication Associative</div>
+                <h1 class="project-title">
+                    <span class="title-script">Radio</span> Bouton
+                </h1>
+                <p class="project-subtitle">
+                    Élaboration et mise en œuvre d'une stratégie de communication complète pour faire briller la radio locale et valoriser ses valeurs
+                </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">📅</div>
+                        <div class="meta-label">Depuis</div>
+                        <div class="meta-value">Juillet 2025</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">👥</div>
+                        <div class="meta-label">Type</div>
+                        <div class="meta-value">Bénévolat</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">🎯</div>
+                        <div class="meta-label">Rôle</div>
+                        <div class="meta-value">Responsable Com'</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content">
+        <div class="container-bento">
+            <div class="content-grid">
+               
+                <div class="content-main">
+                    <h2>
+                        <span class="title-script">La</span> Radio
+                    </h2>
+                    <p>
+                        Radio Bouton est une radio locale associative qui diffuse une programmation éclectique et des émissions variées animées par des bénévoles passionnés. Plus qu'un simple média, c'est un lieu de rencontre, d'expression et de partage pour la communauté locale.
+                    </p>
+                    <p>
+                        En tant que responsable communication, ma mission est de valoriser le travail des bénévoles, de faire rayonner la radio dans les Ardennes et de créer du lien avec les auditeurs. Je pilote l'ensemble de la stratégie de communication multicanale en restant fidèle aux valeurs de la radio : liberté d'expression, joie de vivre et partage.
+                    </p>
+
+                    <h2 style="margin-top: 60px;">
+                        <span class="title-script">Les</span> Valeurs
+                    </h2>
+                </div>
+
+              
+                <div class="content-sidebar">
+                    <div class="info-box">
+                        <h3>🛠️ Outils utilisés</h3>
+                        <ul class="info-list">
+                            <li>Canva</li>
+                            <li>Adobe Suite</li>
+                            <li>Meta Business</li>
+                            <li>LinkedIn</li>
+                            <li>Asana</li>
+                            <li>CapCut</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="values-section">
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🗣️</div>
+                        <h3>Liberté</h3>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">😄</div>
+                        <h3>Joie</h3>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Partage</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="missions-section">
+                <h2 style="font-size: 42px; margin-bottom: 20px; text-align: center;">
+                    <span class="title-script" style="font-size: 52px; color: var(--coral);">Mes</span> Missions
+                </h2>
+                
+                <div class="missions-grid">
+                    <div class="mission-card">
+                        <span class="mission-icon">📱</span>
+                        <h3>Stratégie multicanale</h3>
+                        <ul>
+                            <li>Définition de la ligne éditoriale</li>
+                            <li>Planning de publication</li>
+                            <li>Cohérence d'image de marque</li>
+                            <li>Adaptation aux plateformes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <span class="mission-icon">✍️</span>
+                        <h3>Création de contenu</h3>
+                        <ul>
+                            <li>Rédaction de posts engageants</li>
+                            <li>Création de visuels attractifs</li>
+                            <li>Stories et reels dynamiques</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <span class="mission-icon">👥</span>
+                        <h3>Valorisation</h3>
+                        <ul>
+                            <li>Mise en avant des bénévoles</li>
+                            <li>Promotion des émissions</li>
+                            <li>Interviews des animateurs</li>
+                            <li>Coulisses de la radio</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <span class="mission-icon">🎉</span>
+                        <h3>Animation locale</h3>
+                        <ul>
+                            <li>Organisation d'événements</li>
+                            <li>Partenariats locaux</li>
+                            <li>Jeux concours</li>
+                        </ul>
+                    </div>
+                    
+                    
+                    <div class="mission-card">
+                        <span class="mission-icon">🎨</span>
+                        <h3>Identité visuelle</h3>
+                        <ul>
+                            <li>Templates réseaux sociaux</li>
+                            <li>Supports événementiels</li>
+                            <li>Signalétique</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievements-section">
+                <h2 style="font-size: 42px; margin-bottom: 20px; text-align: center;">
+                    <span class="title-script" style="font-size: 52px; color: var(--coral);">Réalisations</span> & impact
+                </h2>
+                
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-number">+120%</div>
+                        <div class="achievement-label">Visibilité sociale</div>
+                        <div class="achievement-description">Croissance instagram & facebook</div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-number">50+</div>
+                        <div class="achievement-label">Publications</div>
+                        <div class="achievement-description">Contenus créés depuis juillet</div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-number">3</div>
+                        <div class="achievement-label">événements</div>
+                        <div class="achievement-description">Organisés et promus</div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-number">100%</div>
+                        <div class="achievement-label">engagement</div>
+                        <div class="achievement-description">bénévolat passionné</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-nav">
+                <a href="portfolio.html" class="btn-back">
+                    <span>←</span>
+                    <span>Retour au portfolio</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bento">
+        <div class="container-bento">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <span class="logo-script">Cloé</span>
+                        <span class="logo-sans">Laurin</span>
+                    </div>
+                    <p class="footer-tagline">Étudiante entrepreneure engagée en communication • Charleville-Mézières, France</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="apropos.html">À propos</a>
+                    <a href="experiences.html">Expériences</a>
+                    <a href="skillshop.html">Skillshop</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cloé Laurin. Tous droits réservés.</p>
+                <p class="footer-love">Fait avec ❤️ et créativité</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

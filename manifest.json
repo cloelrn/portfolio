@@ -1,11 +1,13 @@
 {
+  "id": "portfolio-cloe",
   "name": "Portfolio Cloé Laurin",
   "short_name": "Cloé",
-  "start_url": "/portfolio/index.html",
-  "display": "standalone",
+  "start_url": "/portfolio/",
+  "display": "fullscreen",
   "background_color": "#FBF9F3",
   "theme_color": "#A896C5",
   "description": "Portfolio de Cloé Laurin, étudiante en communication",
+  "orientation": "any",
   "icons": [
     {
       "src": "assets/icon-192.png",
@@ -16,6 +18,20 @@
       "src": "assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/capture-ecran-pc.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "assets/capture-ecran-mobile.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ]
 }
